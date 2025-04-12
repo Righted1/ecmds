@@ -10,7 +10,7 @@ function convertScript(source, plr)
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
 	source = source:gsub(":GetMouse%(%)%.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
 	source = source:gsub(":GetMouse%(%) %.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
-	source = source:gsub(":GetMouse%(%)NEWLINEREPLACEME%.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
+	source = source:gsub(":GetMouse%(%)\n%.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
 	source = source:gsub(":GetMouse%(%)", [=[: GetMouse() or mdatastuff;]=]):gsub(":getMouse%(%)", [=[: GetMouse() or mdatastuff;]=])
 	source = source:gsub("%.Selected:connect%(", selected):gsub("%.Selected:Connect%(", selected)
 	source = source:gsub("%.Deselected:connect%(", deselected):gsub("%.Deselected:Connect%(", deselected)
