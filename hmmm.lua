@@ -8,6 +8,7 @@ function convertScript(source, plr)
 	
 	-- GSUB GOYSLOP
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
+	source = source:gsub("\t", "")
 	source = source:gsub(":GetMouse%(%)%.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
 	source = source:gsub(":GetMouse%(%) %.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
 	source = source:gsub(":GetMouse%(%)\n%.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
