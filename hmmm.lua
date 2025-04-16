@@ -5,14 +5,15 @@ function convertScript(source, plr)
 	local inpbegan = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect("
 	local inpended = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputEndedCopy:Connect("
 	local inpchanged = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputChangedCopy:Connect("
+	local mousey = ":FindFirstChildOfClass'PlayerGui':FindFirstChild'Chat			'.TransferMsgProps:Invoke(game['ZeroPercentFAT\0'].LocalPlayer.MD)"
 	
 	-- GSUB GOYSLOP
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
 	source = source:gsub("\t", "")
-	source = source:gsub(":GetMouse%(%)%.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
-	source = source:gsub(":GetMouse%(%) %.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
-	source = source:gsub(":GetMouse%(%)\n%.", [=[:HasAppearanceLoaded(); mdatastuff.]=])
-	source = source:gsub(":GetMouse%(%)", [=[: GetMouse() or mdatastuff;]=]):gsub(":getMouse%(%)", [=[: GetMouse() or mdatastuff;]=])
+	source = source:gsub(":GetMouse%(%)%.", mousey)
+	source = source:gsub(":GetMouse%(%) %.", mousey)
+	source = source:gsub(":GetMouse%(%)\n%.", mousey)
+	source = source:gsub(":GetMouse%(%)", mousey):gsub(":getMouse%(%)", mousey)
 	source = source:gsub("%.Selected:connect%(", selected):gsub("%.Selected:Connect%(", selected)
 	source = source:gsub("%.Deselected:connect%(", deselected):gsub("%.Deselected:Connect%(", deselected)
 	source = source:gsub("%.Equipped:Connect%(", toolactivated)
