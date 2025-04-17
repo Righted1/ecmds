@@ -1,5 +1,5 @@
 function convertScript(source, plr)
-    local selected = ".FakeSel:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect("
+	local selected = ".FakeSel:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect("
 	local deselected = ".FakeDesel.Event:Connect("
 	local toolactivated = ".FakeAct:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect("
 	local inpbegan = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect("
@@ -40,7 +40,7 @@ function convertScript(source, plr)
 	source = source:gsub("RenderStepped", "Stepped"):gsub("NetworkClient", "NetworkServer"):gsub("%.FilteringEnabled", ":IsA''"):gsub(":GetSuperSafeChat", ":HasAppearanceLoaded")
 	source = source:gsub(":IsLoaded%(%)", ":IsLoaded() or true")
 	source = source:gsub("game:HttpGet", "_G['chatty476'].gethttp"):gsub("PlayerScripts", "PlayerScriptss")
-    source = "--[[isconved]] "..source
+	source = "--[[isconved]] "..source
 	source = source:gsub("LocalPlayer", plr):gsub("localPlayer", plr)
-    return source
+	return source
 end
