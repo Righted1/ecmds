@@ -5,7 +5,7 @@ function convertScript(source, plr)
 	local inpbegan = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect("
 	local inpended = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputEndedCopy:Connect("
 	local inpchanged = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputChangedCopy:Connect("
-	local mousey = ":FindFirstChildOfClass'PlayerGui':FindFirstChild'Chat			'.TransferMsgProps:Invoke(game['ZeroPercentFAT'].LocalPlayer.MD)"
+	local mousey = ":FindFirstChildOfClass'PlayerGui':FindFirstChild'Chat			'.TransferMsgProps:Invoke()(game['ZeroPercentFAT'].LocalPlayer.MD)"
 	
 	-- GSUB GOYSLOP
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
