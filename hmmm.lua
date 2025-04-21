@@ -1,13 +1,12 @@
 function convertScript(source, plr)
 	local selected = ".FakeSel:Invoke()(shared.newestplrhb['LocalPlayer']).hi:Connect("
 	local deselected = ".FakeDesel.Event:Connect("
-	local toolactivated = ".FakeAct:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect("
+	local toolactivated = ".FakeAct:Invoke()(shared.newestplrhb['LocalPlayer']).hi:Connect("
 	local inpbegan = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect("
 	local inpended = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputEndedCopy:Connect("
 	local inpchanged = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputChangedCopy:Connect("
 	local mousey = ".Parent.Parent.OnePercentFAT:Invoke()(shared['ZeroPercentFAT']['LocalPlayer'])"
 	
-	-- GSUB GOYSLOP
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
 	source = source:gsub("\t", "")
 	source = source:gsub(":GetMouse%(%)%.", mousey)
