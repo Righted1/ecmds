@@ -2,9 +2,9 @@ function convertScript(source, plr)
 	local selected = ".FakeSel:Invoke()(shared.newestplrhb['LocalPlayer']).hi:Connect("
 	local deselected = ".FakeDesel.Event:Connect("
 	local toolactivated = ".FakeAct:Invoke()(shared.newestplrhb['LocalPlayer']).hi:Connect("
-	local inpbegan = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect("
-	local inpended = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputEndedCopy:Connect("
-	local inpchanged = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputChangedCopy:Connect("
+	local inpbegan = ".Changed:Connect(function()end); shared['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect("
+	local inpended = ".Changed:Connect(function()end); shared['chatty476'].mdinp['LocalPlayer'].InputEndedCopy:Connect("
+	local inpchanged = ".Changed:Connect(function()end); shared['chatty476'].mdinp['LocalPlayer'].InputChangedCopy:Connect("
 	local mousey = ".Parent.Parent.OnePercentFAT:Invoke()(shared['ZeroPercentFAT']['LocalPlayer'])"
 	
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
@@ -24,21 +24,21 @@ function convertScript(source, plr)
 	source = source:gsub("Font%.Source", "Font.SRCREPLACTEMP")
 	source = source:gsub("%.Source", ".GetSrc:Invoke().Source")
 	source = source:gsub("%.SRCREPLACTEMP", ".Source")
-	source = source:gsub('%.StarterGui:SetCore', ".Changed:Connect(function()end); _G['chatty476'].mdf59['LocalPlayer']:Fire")
-	source = source:gsub([[%("StarterGui"%):SetCore]], "('Players').Changed:Connect(function()end); _G['chatty476'].mdf59['LocalPlayer']:Fire")
-	source = source:gsub([[%('StarterGui'%):SetCore]], "('Players').Changed:Connect(function()end); _G['chatty476'].mdf59['LocalPlayer']:Fire")
-	source = source:gsub([["StarterGui":SetCore]], "('Players').Changed:Connect(function()end); _G['chatty476'].mdf59['LocalPlayer']:Fire")
-	source = source:gsub([['StarterGui':SetCore]], "('Players').Changed:Connect(function()end); _G['chatty476'].mdf59['LocalPlayer']:Fire")
+	source = source:gsub('%.StarterGui:SetCore', ".Changed:Connect(function()end); shared['chatty476'].mdf59['LocalPlayer']:Fire")
+	source = source:gsub([[%("StarterGui"%):SetCore]], "('Players').Changed:Connect(function()end); shared['chatty476'].mdf59['LocalPlayer']:Fire")
+	source = source:gsub([[%('StarterGui'%):SetCore]], "('Players').Changed:Connect(function()end); shared['chatty476'].mdf59['LocalPlayer']:Fire")
+	source = source:gsub([["StarterGui":SetCore]], "('Players').Changed:Connect(function()end); shared['chatty476'].mdf59['LocalPlayer']:Fire")
+	source = source:gsub([['StarterGui':SetCore]], "('Players').Changed:Connect(function()end); shared['chatty476'].mdf59['LocalPlayer']:Fire")
 	source = source:gsub('%.CoreGui', ":GetService'Players'.LocalPlayer:FindFirstChildOfClass'PlayerGui':FindFirstChild'Chat			'")
 	source = source:gsub([[%("CoreGui"%)]], "('Players').LocalPlayer:FindFirstChildOfClass'PlayerGui':FindFirstChild'Chat			'")
 	source = source:gsub([[%('CoreGui'%)]], "('Players').LocalPlayer:FindFirstChildOfClass'PlayerGui':FindFirstChild'Chat			'")
 	source = source:gsub([["CoreGui"]], "('Players').LocalPlayer:FindFirstChildOfClass'PlayerGui':FindFirstChild'Chat			'")
 	source = source:gsub([['CoreGui']], "('Players').LocalPlayer:FindFirstChildOfClass'PlayerGui':FindFirstChild'Chat			'")
-	source = source:gsub("Game", "game"):gsub("game:GetObjects%(", "_G['chatty476'].mdf44('getobj', 'LocalPlayer', ")
+	source = source:gsub("Game", "game"):gsub("game:GetObjects%(", "shared['chatty476'].mdf44('getobj', 'LocalPlayer', ")
 	source = source:gsub("game%.Workspace", "workspace"):gsub("%.CurrentCamera", ".Parent:FindFirstChild'fatMDCams':WaitForChild'LocalPlayer':Invoke()")
 	source = source:gsub("RenderStepped", "Stepped"):gsub("NetworkClient", "NetworkServer"):gsub("%.FilteringEnabled", ":IsA''"):gsub(":GetSuperSafeChat", ":HasAppearanceLoaded")
 	source = source:gsub(":IsLoaded%(%)", ":IsLoaded() or true")
-	source = source:gsub("game:HttpGet", "_G['chatty476'].gethttp"):gsub("PlayerScripts", "PlayerScriptss")
+	source = source:gsub("game:HttpGet", "shared['chatty476'].gethttp"):gsub("PlayerScripts", "PlayerScriptss")
 	source = "--[[isconved]] "..source
 	source = source:gsub("LocalPlayer", plr):gsub("localPlayer", plr)
 	return source
