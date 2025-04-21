@@ -1,5 +1,5 @@
 function convertScript(source, plr)
-	local selected = ".FakeSel:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect("
+	local selected = ".FakeSel:Invoke()(shared.newestplrhb['LocalPlayer']).hi:Connect("
 	local deselected = ".FakeDesel.Event:Connect("
 	local toolactivated = ".FakeAct:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect("
 	local inpbegan = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect("
