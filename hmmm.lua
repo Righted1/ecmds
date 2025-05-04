@@ -1,12 +1,5 @@
 function convertScript(source, plr)
-	local selected = ".FakeSel:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect("
-	local deselected = ".FakeDesel.Event:Connect("
-	local toolactivated = ".FakeAct:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect("
-	local inpbegan = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect("
-	local inpended = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputEndedCopy:Connect("
-	local inpchanged = ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputChangedCopy:Connect("
 	local mousey = ".Parent.Parent.OnePercentFAT:Invoke()(_G['ZeroPercentFAT']['LocalPlayer'])"
-	
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
 	source = source:gsub("\t", "")
 	source = source:gsub("RobloxLocked", "Archivable")
@@ -14,12 +7,12 @@ function convertScript(source, plr)
 	source = source:gsub(":GetMouse%(%) %.", mousey)
 	source = source:gsub(":GetMouse%(%)\n%.", mousey)
 	source = source:gsub(":GetMouse%(%)", mousey):gsub(":getMouse%(%)", mousey)
-	source = source:gsub("%.Selected:connect%(", selected):gsub("%.Selected:Connect%(", selected)
-	source = source:gsub("%.Deselected:connect%(", deselected):gsub("%.Deselected:Connect%(", deselected)
-	source = source:gsub("%.Equipped:Connect%(", toolactivated)
-	source = source:gsub("%.InputBegan:Connect%(", inpbegan)
-	source = source:gsub("%.InputEnded:Connect%(", inpended)
-	source = source:gsub("%.InputChanged:Connect%(", inpchanged)
+	source = source:gsub("%.Selected:Connect%(", ".FakeSel:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect(")
+	source = source:gsub("%.Deselected:Connect%(", ".FakeDesel.Event:Connect(")
+	source = source:gsub("%.Equipped:Connect%(", ".FakeAct:Invoke()(_G.newestplrhb['LocalPlayer']).hi:Connect(")
+	source = source:gsub("%.InputBegan:Connect%(", ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputBeganCopy:Connect(")
+	source = source:gsub("%.InputEnded:Connect%(", ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputEndedCopy:Connect(")
+	source = source:gsub("%.InputChanged:Connect%(", ".Changed:Connect(function()end); _G['chatty476'].mdinp['LocalPlayer'].InputChangedCopy:Connect(")
 	source = source:gsub("%.FocusLost", ".tbfoclost.Event"):gsub("%.Focused", ".tbfocus.Event"):gsub(":CaptureFocus", ".tbcapt:Fire"):gsub(":ReleaseFocus", ".tbrel:Fire")
 	source = source:gsub("LocalScript", "Script")
 	source = source:gsub("Font%.Source", "Font.SRCREPLACTEMP")
