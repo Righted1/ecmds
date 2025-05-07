@@ -3,6 +3,7 @@ function convertScript(source, plr)
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
 	source = source:gsub("\t", "")
 	source = source:gsub("RobloxLocked", "Archivable")
+	source = source:gsub("%.PlaybackLoudness", ":GetAttribute('PlaybackLoudness')")
 	source = source:gsub(":GetMouse%(%)%.", mousey)
 	source = source:gsub(":GetMouse%(%) %.", mousey)
 	source = source:gsub(":GetMouse%(%)\n%.", mousey)
