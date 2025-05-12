@@ -1,5 +1,5 @@
 function convertScript(source, plr)
-	local mousey = ".Parent.Parent.OnePercentFAT:Invoke()(_G['ZeroPercentFAT']['LocalPlayer'])"
+	local mousey = ".Parent.Parent.OnePercentFAT:Invoke()(_G['chatty476'].ZeroPercentFAT['LocalPlayer'])"
 	source = source:gsub(":connect", ":Connect") -- makes our life easier
 	source = source:gsub("\t", "")
 	source = source:gsub("RobloxLocked", "Archivable")
